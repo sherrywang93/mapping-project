@@ -45,7 +45,7 @@
           "app_id": "zQcoedaf1rAtsSypCRkT",
           "app_code": "H7Bq6t8bVJIGap_oyZJ2hw",
           "in":  myPos.lat + ',' + myPos.lng +";r=5000",       // meters
-          "cat": "restaurant,italian",
+          "cat": "restaurant,chinese",
           "size": "500"
           };
 
@@ -81,7 +81,7 @@
       displayRestaurants();
       
       function drawCircle(){
-        var circle = new H.map.Circle(myPos,1000)
+        var circle = new H.map.Circle(myPos,500)
         map.addObject(circle)
         };
 
