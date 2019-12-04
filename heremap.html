@@ -31,17 +31,16 @@
       var mapEvents = new H.mapevents.MapEvents(map);
       var behavior = new H.mapevents.Behavior(mapEvents);
       
-          // create a marker object
-        posMarker = new H.map.Marker(myPos)
-        // Add the marker to the map 
-        map.addObject(posMarker) 
-        
-        function displayRestaurants(){
+      // create a marker object
+      posMarker = new H.map.Marker(myPos)
+      // Add the marker to the map 
+      map.addObject(posMarker)
+      function display_rest(){
         let params = {
-          "app_id": "zQcoedaf1rAtsSypCRkT",
-          "app_code": "H7Bq6t8bVJIGap_oyZJ2hw",
+          "app_id": "QsK83EeoBIdj2KsWtnhm",
+          "app_code": "j3YJ9PY2Nu8tMpGGHbSRFA",
           "in":  myPos.lat + ',' + myPos.lng +";r=5000",       // meters
-          "cat": "restaurant,sushi,italian",
+          "cat": "restaurant, italian",
           "size": "500"
           };
         let query = Object.keys(params)
@@ -63,16 +62,14 @@
             // printInfo()
             } 
         })
-          function addMarker(newPos,html){
+      }
+      function addMarker(newPos,html){
         var ev_icon = new H.map.Icon('img/sushi.png');
         var evMarker = new H.map.Marker(newPos,{ icon: ev_icon });
         map.addObject(evMarker);
-      }
-      function addMarker(newPos,html){
-        var evMarker = new H.map.Marker(newPos);
-        map.addObject(evMarker);
         };
-      displayRestaurants();
+      
+      display_rest();
       
       function drawCircle(){
         var circle = new H.map.Circle(myPos,1000)
