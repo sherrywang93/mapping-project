@@ -1,0 +1,1 @@
+https://www.google.com/search?rlz=1C1FGUR_enDE869DE869&sxsrf=ACYBGNRmLDrGRaywCA7euBGPxhgryRg7Yg:1575487413761&q=kebab+symbol+png&tbm=isch&source=univ&sa=X&ved=2ahUKEwihupT925zmAhWHaVAKHeR8BdUQsAR6BAgBEAE&biw=1216&bih=668&dpr=2.25#imgrc=1ionv60RAotfDM:
