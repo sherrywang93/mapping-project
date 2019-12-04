@@ -16,7 +16,6 @@
       var platform = new H.service.Platform({
         apikey: "jvpdZECivb-jHLUX8SFu9DnhJFGIadjuK9UeiAmZxO8"
       });
-
       // Obtain the default map types from the platform object:
       var defaultLayers = platform.createDefaultLayers();
       var myPos = {lat: 48.14885, lng: 11.56799};
@@ -28,13 +27,10 @@
           zoom: 11,
           center: myPos
         });
-
       var ui = H.ui.UI.createDefault(map, defaultLayers);
-
       var mapEvents = new H.mapevents.MapEvents(map);
-
       var behavior = new H.mapevents.Behavior(mapEvents);
-
+      
           // create a marker object
         posMarker = new H.map.Marker(myPos)
         // Add the marker to the map 
@@ -45,29 +41,13 @@
           "app_id": "zQcoedaf1rAtsSypCRkT",
           "app_code": "H7Bq6t8bVJIGap_oyZJ2hw",
           "in":  myPos.lat + ',' + myPos.lng +";r=5000",       // meters
-          "cat": "restaurant,burger",
+          "cat": "restaurant,sushi,italian",
           "size": "500"
           };
-          // // Define a variable holding SVG mark-up that defines an icon image:
-          // var svgMarkup = '<svg width="50" height="50" ' +
-          //   'xmlns="http://www.w3.org/2000/svg">' +
-          //   '<rect stroke="white" fill="#1b468d" x="1" y="1" width="50" ' +
-          //   'height="50" /><text x="25" y="40" font-size="30pt" ' +
-          //   'font-family="Arial" font-weight="bold" text-anchor="middle" ' +
-          //   'fill="white">H</text></svg>';
-          // create a marker object
-            var icon = new H.map.Icon('img/burger.png')
-            posMarker = new H.map.Marker(MyPos,{icon: icon})
-          // Add the marker to the map and center the map at the location of the marker:
-          map.addObject(posMarker)
-
         let query = Object.keys(params)
                   .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
                   .join('&')
-
         let url = 'https://places.api.here.com/places/v1/discover/explore?' + query
-
-
         fetch(url,{
           "method": "GET"
         })
@@ -83,20 +63,21 @@
             // printInfo()
             } 
         })
+          function addMarker(newPos,html){
+        var ev_icon = new H.map.Icon('img/sushi.png');
+        var evMarker = new H.map.Marker(newPos,{ icon: ev_icon });
+        map.addObject(evMarker);
       }
-
       function addMarker(newPos,html){
         var evMarker = new H.map.Marker(newPos);
         map.addObject(evMarker);
         };
-
       displayRestaurants();
       
       function drawCircle(){
-        var circle = new H.map.Circle(myPos,500)
+        var circle = new H.map.Circle(myPos,1000)
         map.addObject(circle)
         };
-
     drawCircle();
    
     var myLoc = myPos.lat + ',' + myPos.lng;
@@ -106,7 +87,6 @@
         'range': '1000', // 10 (10x60secs) minutes of driving 
         'rangetype': 'distance'
         };
-
       // Define a callback function to process the isoline response.
       var onResult = function(result){
         var center = new H.geo.Point(
@@ -117,27 +97,21 @@
         var linestring = new H.geo.LineString();
         var isolinePolygon;
         var isolineCenter;
-
         // Add the returned isoline coordinates to a linestring:
         isolineCoords.forEach(function(coords) {
           linestring.pushLatLngAlt.apply(linestring, coords.split(','))
           });
-
         // Create a polygon and a marker representing the isoline:
         isolinePolygon = new H.map.Polygon(linestring);
         //   isolineCenter = new H.map.Marker(center)
-
         // Add the polygon and marker to the map:
         map.addObject(isolinePolygon);
-
         // Center and zoom the map so that the whole isoline polygon is
         // in the viewport:
         map.getViewModel().setLookAtData({bounds: isolinePolygon.getBoundingBox()});
         };
-
       // Get an instance of the routing service:
       var router = platform.getRoutingService();
-
       // Call the Routing API to calculate an isoline:
       router.calculateIsoline(
         routingParams,
