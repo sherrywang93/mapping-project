@@ -58,7 +58,7 @@
             {  
             // resultData[i] = response.results.items[i]
             newPos= ({lat: response.results.items[i].position[0], lng: response.results.items[i].position[1]});
-            addMarker(newPos)
+         addMarker(newPos)
             // printInfo()
             } 
         })
@@ -66,10 +66,7 @@
       function addMarker(newPos,html){
         var ev_icon = new H.map.Icon('img/sushi.png');
         var evMarker = new H.map.Marker(newPos,{ icon: ev_icon });
-       <p align="center">
-        <img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" width="256" title="Github Logo">
-       </p>
-        <img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" width="40" height="40" title="Github Logo">
+            <img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" width="40" height="40" title="Github Logo">
         map.addObject(evMarker);
         };
       
